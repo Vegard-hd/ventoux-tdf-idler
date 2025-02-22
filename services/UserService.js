@@ -18,7 +18,15 @@ class UserService {
       },
     );
   }
-
+  /**
+   *
+   * @param {string} firstName
+   * @param {string} lastName
+   * @param {string} username
+   * @param {string} salt
+   * @param {string} encryptedPassword
+   * @returns {Promise<*>}
+   */
   async create(firstName, lastName, username, salt, encryptedPassword) {
     return await this.User.create({
       FirstName: firstName,
