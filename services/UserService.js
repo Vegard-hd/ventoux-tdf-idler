@@ -7,6 +7,12 @@ class UserService {
   }
 
   // raw SQL query using replacements
+  /**
+   *
+   * @param {string} name
+   * @param {string} password
+   * @returns
+   */
   async rawQuery(name, password) {
     return await this.client.query(
       `
