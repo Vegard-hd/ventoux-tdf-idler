@@ -24,8 +24,9 @@ module.exports = (sequelize, Sequelize) => {
   );
   user.associate = function (models) {
     //setup associations for user here
+    user.hasOne(models.score);
+    user.belongsTo(models.guest);
     user.belongsToMany(models.upgrades, { through: models.upgrades_junction });
-    // user.belongsToMany(models.Room, { through: models.Reservation });
   };
   return user;
 };

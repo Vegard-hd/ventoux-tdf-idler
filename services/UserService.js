@@ -14,78 +14,45 @@ class UserService {
    * @returns
    */
   async rawQuery(name, password) {
-    return await this.client.query(
-      `
+    return await this.client
+      .query(
+        `
     SELECT name AS n WHERE n.password = :password AND n.name = :name`,
-      {
-        replacements: { password: password, name: name },
-        type: QueryTypes.SELECT,
-        plain: true,
-      },
-    );
+        {
+          replacements: { password: password, name: name },
+          type: QueryTypes.SELECT,
+          plain: true,
+        },
+      )
+      .catch((e) => console.warn(e));
   }
-  /**
-   *
-   * @param {string} firstName
-   * @param {string} lastName
-   * @param {string} username
-   * @param {string} salt
-   * @param {string} encryptedPassword
-   * @returns {Promise<*>}
-   */
-  async create(firstName, lastName, username, salt, encryptedPassword) {
+
+  async create(
+    firstName = "",
+    lastName = "",
+    username = "",
+    salt,
+    encryptedPassword,
+  ) {
     return await this.User.create({
       FirstName: firstName,
       LastName: lastName,
       Username: username,
       Salt: salt,
       EncryptedPassword: encryptedPassword,
-    });
+    }).catch((e) => console.warn(e));
   }
 
   async getAll() {
     return await this.User.findAll({
       where: {},
-    });
+    }).catch((e) => console.warn(e));
   }
 
-  /* Getting a user using sequelize include / SQL JOIN */
-
-  // async getOne(userId) {
-  //   return await this.User.findOne({
-  //     where: { id: userId },
-  //     include: {
-  //       model: this.Room,
-  //       through: {
-  //         attributes: ["StartDate", "EndDate"],
-  //       },
-  //       include: {
-  //         model: this.Hotel,
-  //       },
-  //     },
-  //   });
-  // }
-
-  // example of executing a join using sequelize
-
-  /*   async getOneByName(username) {
-    return await this.User.findOne({
-      where: { username: username },
-      include: {
-        model: this.Room,
-        through: {
-          attributes: ["StartDate", "EndDate"],
-        },
-        include: {
-          model: this.Hotel,
-        },
-      },
-    });
-  } */
   async getArrOfId() {
     return await this.User.findAll({
       attributes: ["id"],
-    });
+    }).catch((e) => console.warn(e));
   }
 
   /* Deletes a user that has Role NOT "Admin" */
@@ -97,7 +64,7 @@ class UserService {
           [Op.not]: "Admin",
         },
       },
-    });
+    }).catch((e) => console.warn(e));
   }
 }
 module.exports = UserService;
