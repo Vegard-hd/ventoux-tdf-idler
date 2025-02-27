@@ -2,10 +2,13 @@ module.exports = (sequelize, Sequelize) => {
   const guest = sequelize.define(
     "guest",
     {
-      session_id: Sequelize.DataTypes.STRING,
+      sessionid: {
+        type: Sequelize.DataTypes.STRING,
+        unique: true,
+      },
     },
     {
-      timestamps: false,
+      timestamps: true,
     },
   );
   guest.associate = function (models) {

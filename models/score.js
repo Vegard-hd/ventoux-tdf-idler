@@ -6,31 +6,31 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         unique: false,
-        default: 0,
+        defaultValue: 0,
       },
-      total_score: {
+      totalscore: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         unique: false,
-        default: 0,
+        defaultValue: 0,
       },
-      current_distance: {
+      currentdistance: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         unique: false,
-        default: 0,
+        defaultValue: 0,
       },
-      total_distance: {
+      totaldistance: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         unique: false,
-        default: 0,
+        defaultValue: 0,
       },
-      completed_runs: {
+      completedruns: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         unique: false,
-        default: 0,
+        defaultValue: 0,
       },
     },
     {

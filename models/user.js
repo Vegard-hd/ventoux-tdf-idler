@@ -2,14 +2,14 @@ module.exports = (sequelize, Sequelize) => {
   const user = sequelize.define(
     "user",
     {
-      fist_name: Sequelize.DataTypes.STRING,
-      last_name: Sequelize.DataTypes.STRING,
+      fistname: Sequelize.DataTypes.STRING,
+      lastname: Sequelize.DataTypes.STRING,
       username: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      encrypted_password: {
+      encryptedpassword: {
         type: Sequelize.DataTypes.BLOB,
         allowNull: false,
       },

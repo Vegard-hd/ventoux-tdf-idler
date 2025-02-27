@@ -2,9 +2,9 @@ module.exports = (sequelize, Sequelize) => {
   const upgrades = sequelize.define(
     "upgrades",
     {
-      upgrade_name: Sequelize.DataTypes.STRING,
-      upgrade_cost: Sequelize.DataTypes.INTEGER,
-      upgrade_description: Sequelize.DataTypes.STRING,
+      upgradename: Sequelize.DataTypes.STRING,
+      upgradecost: Sequelize.DataTypes.INTEGER,
+      upgradedescription: Sequelize.DataTypes.STRING,
       attributes: Sequelize.DataTypes.JSON,
     },
     {

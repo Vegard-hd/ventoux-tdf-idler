@@ -3,17 +3,12 @@ const { Op } = require("sequelize");
 class UserService {
   constructor(db) {
     this.client = db.sequelize;
-    this.User = db.User;
+    this.User = db.user;
   }
 
   // raw SQL query using replacements
-  /**
-   *
-   * @param {string} name
-   * @param {string} password
-   * @returns
-   */
-  async rawQuery(name, password) {
+
+  async rawQuery(name = "", password = "") {
     return await this.client
       .query(
         `
